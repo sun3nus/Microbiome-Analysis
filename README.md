@@ -98,11 +98,11 @@ qiime tools import \
 <br/>
 :warning:
 <br/>
-    ```
+  ```
     There was a problem importing raw_data:
 
     Missing one or more files for CasavaOneEightSingleLanePerSampleDirFmt: '.+_.+_L[0-9][0-9][0-9]_R[12]_001\\.fastq\\.gz'
-    ```
+  ```
 - 이 에러 메세지는 Qiime2에서 Casava 1.8 형식의 파일을 찾을 수 없거나, 파일명이 올바르지 않은 경우 발생
 
 #### 1.2.2 Manifest 파일로 raw 데이터 불러오기
