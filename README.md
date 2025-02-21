@@ -96,7 +96,8 @@ qiime tools import \
 ```
 - 위 커맨드 실행 시 아래 에러가 발생하면 **1.4.2** 방법으로 raw data import 하기
 <br/>
-:warning: 
+:warning:
+<br/>
     ```
     There was a problem importing raw_data:
 
