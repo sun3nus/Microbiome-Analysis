@@ -156,9 +156,9 @@ qiime dada2 denoise-paired \
   --p-trim-left-f 20 \
   --p-trunc-len-r 220 \
   --p-trim-left-r 10 \
-  --o-representative-sequences asv-sequences.qza \
-  --o-table feature-table.qza \
-  --o-denoising-stats dada2-stats.qza
+  --o-representative-sequences asv-sequences_opt.qza \
+  --o-table feature-table_opt.qza \
+  --o-denoising-stats dada2-stats_opt.qza
 ```
 |옵션|기본값|설명|
 |------|---|---|
@@ -169,8 +169,7 @@ qiime dada2 denoise-paired \
 |--p-min-fold-parent-over-abundance|1.0|키메라 후보 서열과 부모 서열 간 최소 풍부도 비율
 |--p-n-threads|1|사용할 CPU 스레드 수|
 - **--p-trunc-len** 옵션은 ```V1_demultiplexed-sequences-summ.qzv```의 Quality 그래프 확인 후, Quality Score가 30 이하로 떨어지는 bp로 지정
-- **--p-trim-left** 옵션은 read 앞쪽에 제거되지 않고 남아있을 가능성이 있는 프라이머나 어댑터 등을 제거하기 위함
-- **-p-trunc-len**와 **--p-trim-left**로 트리밍된 forward와 reverse reads의 길이가 
+- **--p-trim-left** 옵션은 read 앞쪽에 제거되지 않고 남아있을 가능성이 있는 프라이머나 어댑터 등을 제거하기 위함 
 - **-p-max-ee** 옵션은 값을 낮추면 더 엄격한 품질 필터링, 보통 1.0~2.0 사이 값 사용
 - **p-min-overlap** 옵션은 값을 낮추면 overlap 길이가 짧아도 병합이 가능하게 함
 - **p-min-fold-parent-over-abundance** 옵션은 값을 낮추면 Chimeric reads를 더 엄격하게 제거함
@@ -178,8 +177,8 @@ qiime dada2 denoise-paired \
 #### 1.3.1 DADA2 denoising 결과 시각화
 ```bash
 qiime metadata tabulate \
-  --m-input-file dada2-stats.qza \
-  --o-visualization dada2-stats-summ.qzv
+  --m-input-file dada2-stats_opt.qza \
+  --o-visualization V2-dada2-stats-summ_opt.qzv
 ```
 
 <br/>
@@ -188,16 +187,16 @@ qiime metadata tabulate \
 #### 1.4.1 Feature Table 요약 및 시각화
 ```bash
 qiime feature-table summarize \
---i-table feature-table.qza \
+--i-table feature-table_opt.qza \
 --m-sample-metadata-file sample-metadata.tsv \
---o-visualization feature-table-summ.qzv
+--o-visualization V3_feature-table-summ.qzv
 ```
 
 #### 1.4.2 ASV representative 서열 요약 및 시각화
 ```bash
 qiime feature-table tabulate-seqs \
---i-data asv-sequences.qza \
---o-visualization asv-sequences-summ.qzv
+--i-data asv-sequences_opt.qza \
+--o-visualization V4_asv-sequences-summ.qzv
 ```
 
 <br/>
